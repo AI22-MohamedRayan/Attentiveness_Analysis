@@ -21,7 +21,7 @@ from models import (
 )
 
 # Database connection
-MONGODB_URL = os.getenv("MONGODB_URL", "mongodb+srv://username:password@cluster.mongodb.net/")
+MONGODB_URL = os.getenv("MONGODB_URL", "mongodb+srv://mohammedraiyanrs_db_user:nOTlK1jWGQ8XBDnA@cluster0.u7gswbr.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
 DATABASE_NAME = "attentiveness_system"
 
 client = AsyncIOMotorClient(MONGODB_URL)
