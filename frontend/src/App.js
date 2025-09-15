@@ -4,6 +4,7 @@ import { Toaster } from 'react-hot-toast';
 import { AuthProvider } from './context/AuthContext';
 import { AppProvider } from './context/AppContext';
 import ProtectedRoute from './components/common/ProtectedRoute';
+import Layout from './components/common/Layout'; // Import the Layout component
 
 // Pages
 import Login from './pages/Login';
@@ -28,16 +29,18 @@ function App() {
         <BrowserRouter>
           <div className="App">
             <Routes>
-              {/* Public Routes */}
+              {/* Public Routes - No Layout */}
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
               
-              {/* Protected Routes */}
+              {/* Protected Routes - With Layout */}
               <Route
                 path="/dashboard"
                 element={
                   <ProtectedRoute>
-                    <Dashboard />
+                    <Layout>
+                      <Dashboard />
+                    </Layout>
                   </ProtectedRoute>
                 }
               />
@@ -46,7 +49,9 @@ function App() {
                 path="/create-class"
                 element={
                   <ProtectedRoute>
-                    <CreateClass />
+                    <Layout>
+                      <CreateClass />
+                    </Layout>
                   </ProtectedRoute>
                 }
               />
@@ -55,7 +60,9 @@ function App() {
                 path="/manage-classes"
                 element={
                   <ProtectedRoute>
-                    <ManageClasses />
+                    <Layout>
+                      <ManageClasses />
+                    </Layout>
                   </ProtectedRoute>
                 }
               />
@@ -64,7 +71,9 @@ function App() {
                 path="/register-student"
                 element={
                   <ProtectedRoute>
-                    <RegisterStudent />
+                    <Layout>
+                      <RegisterStudent />
+                    </Layout>
                   </ProtectedRoute>
                 }
               />
@@ -73,7 +82,9 @@ function App() {
                 path="/live-attentiveness"
                 element={
                   <ProtectedRoute>
-                    <LiveAttentiveness />
+                    <Layout>
+                      <LiveAttentiveness />
+                    </Layout>
                   </ProtectedRoute>
                 }
               />
@@ -82,7 +93,9 @@ function App() {
                 path="/reports"
                 element={
                   <ProtectedRoute>
-                    <Reports />
+                    <Layout>
+                      <Reports />
+                    </Layout>
                   </ProtectedRoute>
                 }
               />
@@ -91,7 +104,9 @@ function App() {
                 path="/profile"
                 element={
                   <ProtectedRoute>
-                    <Profile />
+                    <Layout>
+                      <Profile />
+                    </Layout>
                   </ProtectedRoute>
                 }
               />

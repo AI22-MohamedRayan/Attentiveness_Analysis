@@ -17,7 +17,7 @@ const Header = () => {
   };
 
   return (
-    <header className="bg-white shadow-sm border-b border-gray-200 fixed w-full top-0 z-30">
+    <header className="bg-white shadow-sm border-b border-gray-200 fixed w-full left-0 top-0 z-30">
       <div className="flex items-center justify-between px-4 py-3">
         {/* Left section */}
         <div className="flex items-center space-x-4">
@@ -54,7 +54,7 @@ const Header = () => {
           <div className="relative flex items-center space-x-3">
             <div className="hidden sm:block text-right">
               <p className="text-sm font-medium text-gray-900">
-                {user?.name || 'Teacher'}
+                {user?.name || 'Rayan'}
               </p>
               <p className="text-xs text-gray-500">
                 {user?.department || 'Department'}

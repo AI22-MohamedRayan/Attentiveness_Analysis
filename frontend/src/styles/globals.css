@@ -13,6 +13,22 @@ html {
 }
 
 body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+main {
+  padding-top: 4rem; /* Adjust for header height */
+}
+
+@media (min-width: 1024px) {
+  main {
+    margin-left: 16rem; /* Adjust for sidebar width */
+  }
+}
+
+body {
   background-color: #f9fafb;
   color: #111827;
   font-size: 14px;

@@ -13,7 +13,7 @@ import {
 import { useApp } from '../../context/AppContext';
 
 const Sidebar = () => {
-  const { sidebarOpen } = useApp();
+  const { sidebarOpen, setSidebarOpen } = useApp();
   const location = useLocation();
 
   const navigation = [
@@ -61,25 +61,35 @@ const Sidebar = () => {
     <>
       {/* Mobile overlay */}
       {sidebarOpen && (
-        <div className="fixed inset-0 z-20 bg-black bg-opacity-50 lg:hidden" />
+        <div 
+          className="fixed inset-0 z-20 bg-black bg-opacity-50 lg:hidden" 
+          onClick={() => setSidebarOpen(false)} // Ensure this closes the sidebar
+        />
       )}
       
-      {/* Sidebar */}
+      {/* Sidebar - positioned below header */}
       <div className={`
-        fixed top-0 left-0 z-30 h-full bg-white border-r border-gray-200 transition-transform duration-300 ease-in-out
+        fixed left-0 z-30 bg-white border-r border-gray-200 transition-transform duration-300 ease-in-out
+        top-16 h-[calc(100vh-4rem)]
         ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'}
-        lg:translate-x-0 lg:static lg:inset-0
-        w-64 pt-16
+        lg:translate-x-0
+        w-64
       `}>
         <div className="flex flex-col h-full">
           {/* Navigation */}
-          <nav className="flex-1 px-4 py-6 space-y-2">
+          <nav className="flex-1 px-4 py-6 space-y-2 overflow-y-auto">
             {navigation.map((item) => {
               const Icon = item.icon;
               return (
                 <Link
                   key={item.name}
                   to={item.href}
+                  onClick={() => {
+                    // Close sidebar on mobile when navigating
+                    if (window.innerWidth < 1024) {
+                      setSidebarOpen(false);
+                    }
+                  }}
                   className={`
                     flex items-center px-3 py-3 text-sm font-medium rounded-lg transition-colors duration-200
                     ${isActive(item.href)
@@ -108,6 +118,12 @@ const Sidebar = () => {
           <div className="px-4 py-4 border-t border-gray-200">
             <Link
               to="/profile"
+              onClick={() => {
+                // Close sidebar on mobile when navigating
+                if (window.innerWidth < 1024) {
+                  setSidebarOpen(false);
+                }
+              }}
               className={`
                 flex items-center px-3 py-2 text-sm font-medium rounded-lg transition-colors duration-200
                 ${isActive('/profile')
